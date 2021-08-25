@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mellow.mybatisplus.mapper.UserMapper">
-    <select id="selectAllByName" resultType="com.mellow.mybatisplus.entity.User">
-        select *
-        from user
+    
+    <sql id="base_column">
+        id,name,age,email
+    </sql>
+    
+    <select id="selectUserByName" resultType="com.mellow.mybatisplus.entity.User">
+        select <include refid="base_column"></include>
+        from t_user
         where
         name = #{name}
     </select>

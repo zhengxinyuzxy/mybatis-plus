@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -20,9 +21,11 @@ public class MapperTests {
     @Test
     public void addUser() {
         User user = new User();
-        user.setName("川普");
+        user.setName("小黄");
         user.setAge(99);
-        user.setEmail("chuanpu@qq.com");
+        user.setEmail("xiaohuang@qq.com");
+        /*user.setCreateTime(LocalDateTime.now());
+        user.setUpdateTime(LocalDateTime.now());*/
         int addResult = userMapper.insert(user);
         System.out.println("受影响行数：" + addResult);
         System.out.println("返回id为：" + user.getId());
@@ -56,10 +59,10 @@ public class MapperTests {
     @Test
     public void updateUser() {
         User user = new User();
-        user.setId(1L);
-        user.setName("拜登");
+        user.setId(1430412635114958863L);
+        user.setName("小刚");
         user.setAge(100);
-        user.setEmail("baident@qq.com");
+        user.setEmail("xiaogang@qq.com");
         int updateResult = userMapper.updateById(user);
         System.out.println("更新受影响的行数：" + updateResult);
     }
@@ -67,7 +70,7 @@ public class MapperTests {
     // 根据id删除
     @Test
     public void deleteUser() {
-        int deleteResult = userMapper.deleteById(2);
+        int deleteResult = userMapper.deleteById(5L);
         System.out.println("根据id删除受影响的行数：" + deleteResult);
     }
 
@@ -86,6 +89,13 @@ public class MapperTests {
         map.put("age", 99);
         int deleteResult = userMapper.deleteByMap(map);
         System.out.println("批量删除受影响的行数：" + deleteResult);
+    }
+
+    // 根据自定义条件查询
+    @Test
+    public void selectUserByName() {
+        List<User> users = userMapper.selectUserByName("李旦1");
+        users.forEach(System.out::println);
     }
 
 

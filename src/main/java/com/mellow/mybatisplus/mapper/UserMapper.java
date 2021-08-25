@@ -8,5 +8,5 @@ import java.util.List;
 public interface UserMapper extends BaseMapper<User> {
 
     // 自定义mapper
-    List<User> selectAllByName(String name);
+    List<User> selectUserByName(String name);
 }

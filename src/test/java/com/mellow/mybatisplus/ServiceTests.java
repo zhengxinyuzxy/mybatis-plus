@@ -25,12 +25,18 @@ public class ServiceTests {
         List<User> list = new ArrayList<>();
         for (int i = 1; i <= 5; i++) {
             User user = new User();
-            user.setName("李旦" + i);
-            user.setAge(18 + i);
-            user.setEmail("lidan" + i + "@qq.com");
+            user.setName("蜻蜓" + i);
+            user.setAge(20 + i);
+            user.setEmail("qingting" + i + "@qq.com");
             list.add(user);
         }
         boolean b = userService.saveBatch(list);
         System.out.println("批量添加是否成功：" + b);
     }
+
+     @Test
+    public void testListSelectByName() {
+         List<User> users = userService.listSelectByName("李旦2");
+         users.forEach(System.out::println);
+     }
 }
