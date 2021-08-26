@@ -19,9 +19,22 @@ public class PageInterceptorTest {
 
     @Test
     public void interceptorPage() {
+
         Page<User> pageParme = new Page<>(2,5);
         userMapper.selectPage(pageParme,null);
+
         List<User> records = pageParme.getRecords();
         records.forEach(System.out::println);
+
+        long total = pageParme.getTotal();
+        System.out.println("记录数量为：" + total);
+
+        boolean bNext = pageParme.hasNext();
+        System.out.println("是否有下一页" + bNext);
+
+        boolean bPrevious = pageParme.hasPrevious();
+        System.out.println("是否有上一页" + bPrevious);
+
+
     }
 }
