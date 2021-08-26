@@ -21,9 +21,9 @@ public class MapperTests {
     @Test
     public void addUser() {
         User user = new User();
-        user.setName("小黄");
-        user.setAge(99);
-        user.setEmail("xiaohuang@qq.com");
+        user.setName("小华");
+        user.setAge(88);
+        user.setEmail("xiaohua@qq.com");
         /*user.setCreateTime(LocalDateTime.now());
         user.setUpdateTime(LocalDateTime.now());*/
         int addResult = userMapper.insert(user);

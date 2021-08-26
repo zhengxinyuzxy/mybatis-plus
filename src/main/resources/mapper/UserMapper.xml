@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mellow.mybatisplus.mapper.UserMapper">
+    <resultMap id="myPageUser" type="com.mellow.mybatisplus.entity.User">
+        <id column="uid" property="id"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="email" property="email"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="is_deleted" property="deleted"/>
+    </resultMap>
     
     <sql id="base_column">
-        id,name,age,email
+        uid,name, age, email, create_time, update_time, is_deleted
     </sql>
     
     <select id="selectUserByName" resultType="com.mellow.mybatisplus.entity.User">
@@ -11,5 +20,11 @@
         from t_user
         where
         name = #{name}
+    </select>
+    <select id="selectPage" resultMap="myPageUser">
+        select <include refid="base_column"/>
+        from t_user
+        where
+        age > #{age}
     </select>
 </mapper>
