@@ -19,7 +19,7 @@ public class PageInterceptorTest {
 
     @Test
     public void interceptorPage() {
-        Page<User> pageParme = new Page<>(1,3);
+        Page<User> pageParme = new Page<>(2,5);
         userMapper.selectPage(pageParme,null);
         List<User> records = pageParme.getRecords();
         records.forEach(System.out::println);
