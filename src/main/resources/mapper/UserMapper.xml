@@ -12,11 +12,11 @@
     </resultMap>
     
     <sql id="base_column">
-        uid,name, age, email, create_time, update_time, is_deleted
+        uid, name, age, email, create_time, update_time, is_deleted
     </sql>
     
-    <select id="selectUserByName" resultType="com.mellow.mybatisplus.entity.User">
-        select <include refid="base_column"></include>
+    <select id="selectUserByName" resultMap="myPageUser">
+        select <include refid="base_column"/>
         from t_user
         where
         name = #{name}
